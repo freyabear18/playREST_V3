@@ -1,0 +1,27 @@
+{% extends "public_base.njk" %}
+
+{% block pageTitle %}Game card{% endblock %}
+
+{% block content %}
+    <div>
+        <h1>{{game.name}}</h1>
+
+        <img src="/public/uploads/{{ game.image }}" alt="game image">
+        <p>{{game.description}}</p>
+        <p><strong>Minimum age requirement: </strong>{{game.minAge}}</p>
+        <p><strong>Number of players: </strong>{{game.players}}</p>
+        <p><strong>Type of game: </strong>{{game.type}}</p>
+        <p><strong>Price: </strong>{{game.price}}</p>
+        
+        {% if editions.length>0 %}
+            <ul>
+                {% for edition in editions %}
+                    <li>
+                        {{edition.name}} ({{edition.year}})
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    
+{% endblock %}

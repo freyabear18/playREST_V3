@@ -1,0 +1,27 @@
+{% extends "admin_base.njk" %}
+
+{% block pageTitle %}Games{% endblock %}
+
+{% block content %}
+    <h1>List of games</h1>
+    {% for game in games %}
+        <div class="row m-1">
+            <div class="p-1 col-6">
+                <a href="/games/{{ game.id }}">{{ game.name }}</a>
+            </div>
+            <div class="col-auto">
+                <form action="/admin/games/{{ game.id }}" method="post">
+                    <input type="hidden" name="_method" value="delete"/>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+            <div class="col-auto">
+                <a class="btn btn-primary" href="/admin/games/edit/{{ game.id }}">Edit</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col-12">There are no games available.</div>
+        </div>
+    {% endfor %}
+{% endblock %}

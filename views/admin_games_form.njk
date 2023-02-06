@@ -1,0 +1,90 @@
+{% extends "admin_base.njk" %}
+
+{% block pageTitle %}New{% endblock %}
+
+{% block content %}
+    {% if game %}
+        <h1>Edit Game</h1>
+        <form action="/admin/games/{{ game.id }}" method="post">
+            <input type="hidden" name="_method" value="put"/>
+
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" name="name" placeholder="Name..." value="{{ game.name }}"/>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <input type="text" class="form-control" name="description" placeholder="Brief game description..." value="{{ game.description }}"/>
+            </div>
+            <div class="form-group">
+                <label for="minAge">Minimum age requirement:</label>
+                <input type="number" class="form-control" name="minAge" placeholder="Minimum age..." value="{{ game.minAge }}"/>
+            </div>
+            <div class="form-group">
+                <label for="players">Players:</label>
+                <input type="text" class="form-control" name="players" placeholder="Amount of players..." value="{{ game.players }}"/>
+            </div>
+            <div class="form-group">
+                <label for="type">Type:</label>
+                <select id="type" name="type">
+                    <option value="roleplay">roleplay</option>
+                    <option value="escape">escape</option>
+                    <option value="dice">dice</option>
+                    <option value="token">token</option>
+                    <option value="card">card</option>
+                    <option value="board">board</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="text" class="form-control" name="price" placeholder="Price..." value="{{ game.price }}"/>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"> Send </button>
+            </div>
+        </form>
+
+    {% else %}
+
+        <h1>New Game</h1>
+        <form action="/admin/games" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" name="name" placeholder="Name..." />
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <input type="text" class="form-control" name="description" placeholder="Brief game description..." />
+            </div>
+            <div class="form-group">
+                <label for="minAge">Minimum age requirement:</label>
+                <input type="number" class="form-control" name="minAge" placeholder="Minimum age..." />
+            </div>
+            <div class="form-group">
+                <label for="players">Players:</label>
+                <input type="text" class="form-control" name="players" placeholder="Amount of players..." />
+            </div>
+            <div class="form-group">
+                <label for="type">Type:</label>
+                <select id="type" name="type">
+                    <option value="roleplay">roleplay</option>
+                    <option value="escape">escape</option>
+                    <option value="dice">dice</option>
+                    <option value="token">token</option>
+                    <option value="card">card</option>
+                    <option value="board">board</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="text" class="form-control" name="price" placeholder="Price..." />
+            </div>
+            <div class="form-group">
+                <label for="image">Image:</label>
+                <input type="file" class="form-control" name="image" />
+            </div>
+            <button type="submit" class="btn btn-primary"> Send </button>
+        </form>
+
+    {% endif %}
+{% endblock %}

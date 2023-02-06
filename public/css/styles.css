@@ -1,0 +1,17 @@
+/*Freya Avalon Orla Mann -- Styles sheet*/
+
+.div.row:nth-child(even) div:first-of-type{
+    width: 70%;
+    background-color: #666666;
+    color: #ffffff;
+}
+
+.div.row:nth-child(odd) div:first-of-type{
+    width: 70%;
+    background-color: #cccccc;
+    color: #000000;
+}
+
+.container{
+    margin: 5%;
+}

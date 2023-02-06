@@ -1,0 +1,24 @@
+{% extends "public_base.njk" %}
+
+{% block pageTitle %}Home{% endblock %}
+{% block content %}
+    <form action="/search" method="get" enctype="multipart/form-data">
+        <input type="text" class="form-control" name="name" 
+            placeholder="Find game.."/>
+        <button type="submit" class="btn btn-primary"> Send </button>
+    </form>
+
+    {% if games %}
+        {% for game in games %}
+
+            <div class="row m-1">
+                <div class="p-1 col-6"><a href="/games/{{ game.id }}">{{ game.name }}</a></div>
+            </div>
+
+        {% endfor %}
+    {% else %}
+
+        <p>{{ error }}</p>
+
+    {% endif %}
+{% endblock %}
