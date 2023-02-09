@@ -11,7 +11,7 @@ const games = require(__dirname + '/routes/games');
 const auth = require(__dirname + '/routes/auth');
 const public = require(__dirname + '/routes/public');
 
-mongoose.connect('mongodb://127.0.0.1:27017/playrest_v3',{
+mongoose.connect('mongodb://mymongodb/playrest_v3',{
     useNewUrlParser: true
 });
 
