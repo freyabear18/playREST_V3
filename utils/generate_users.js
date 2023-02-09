@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const User = require(__dirname + '/../models/user');
 
-mongoose.connect('mongodb://127.0.0.1:27017/playrest_v3');
+mongoose.connect('mongodb://mymongodb/playrest_v3');
 
 User.collection.drop();
 
