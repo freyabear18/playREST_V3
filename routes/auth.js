@@ -1,10 +1,17 @@
 // Freya Avalon Orla Mann -- Auth routes
 
 const express = require('express');
+const { saveUsers } = require('../utils/generate_users');
 const User = require(__dirname + '/../models/user.js');
+const generate_users = require(__dirname + '/../utils/generate_users.js');
 
 let router = express.Router();
 let users = [];
+
+router.get('/users', (req, res)=> {
+    saveUsers();
+    res.render('auth_login'); 
+});
 
 router.get('/login', (req, res) => {
     res.render('auth_login');

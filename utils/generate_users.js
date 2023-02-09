@@ -12,11 +12,14 @@ let usu1 = new User({
     password: '12345678'
 });
 
-usu1.save();
 
 let usu2 = new User({
     login: 'davidMiguel',
     password: '87654321'
 });
 
-usu2.save();
+
+export function saveUsers(){
+    usu1.save();
+    usu2.save();
+}
