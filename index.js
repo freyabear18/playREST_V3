@@ -6,6 +6,7 @@ const express = require('express');
 const session = require('express-session');
 const mongoose = require('mongoose');
 const nunjucks = require('nunjucks');
+const generateUsers = require('./utils/generate_users')
 
 const games = require(__dirname + '/routes/games');
 const auth = require(__dirname + '/routes/auth');
@@ -21,6 +22,8 @@ nunjucks.configure('views', {
     autoescape: true,
     express: app
 });
+
+generateUsers.saveUsers();
 
 //auth stuff
 app.use(session({

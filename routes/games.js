@@ -55,12 +55,30 @@ router.get('/games/edit/editions/:gameId', auth, (req, res) => {
     });
 });
 
+router.post('/games/', upload.single('image'), (req, res) => {
+    let newGame = new Game({
+        name: req.body.name,
+        description: req.body.description,
+        minAge: req.body.minAge,
+        players: req.body.players,
+        type: req.body.type,
+        price: req.body.price,
+        image: req.file.filename
+    });
+
+    newGame.save().then(result => {
+        res.redirect(req.baseUrl);
+    }).catch(error => {
+        res.render('admin_error', {error: error});
+    });
+});
+
 router.put('/games/:id', auth, (req, res) => {
     Game.findByIdAndUpdate(req.params.id, {
         $set:{
             name: req.body.name,
             description: req.body.description,
-            age: req.body.age,
+            minAge: req.body.minAge,
             players: req.body.players,
             type: req.body.type,
             price: req.body.price
