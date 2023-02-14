@@ -19,7 +19,9 @@ let usu2 = new User({
 });
 
 
-export function saveUsers(){
+function saveUsers(){
     usu1.save();
     usu2.save();
 }
+
+module.exports = saveUsers;
