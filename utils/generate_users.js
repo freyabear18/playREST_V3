@@ -24,4 +24,6 @@ function saveUsers(){
     usu2.save();
 }
 
-module.exports = saveUsers;
+module.exports = {
+    saveUsers: saveUsers
+};
